@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: theme('fontFamily.sans');
+    color: theme('colors.ark.text.DEFAULT');
+    background-color: theme('colors.ark.bg');
+  }
+}
+
+@layer components {
+  .h-card {
+    @apply bg-ark-panel border border-ark-border rounded-ark shadow-ark transition-all duration-300;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .h-card:hover {
+    @apply shadow-ark-lg border-ark-border;
+  }
+
+  .h-card::before {
+    content: '';
+    @apply absolute -inset-1 opacity-0 bg-holographic-gradient bg-[length:400%_400%] transition-opacity duration-300 blur-xl;
+    z-index: -1;
+  }
+
+  .h-card:hover::before {
+    @apply opacity-20;
+  }
+
+  .h-button {
+    @apply px-4 py-2 rounded-ark font-medium transition-all duration-200 focus:outline-none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .h-button-primary {
+    @apply bg-ark-blue text-white hover:bg-ark-blue-light;
+  }
+
+  .h-button-secondary {
+    @apply bg-ark-border text-ark-text hover:bg-ark-hover;
+  }
+
+  .h-button-success {
+    @apply bg-ark-green text-white hover:bg-ark-green-light;
+  }
+
+  .h-button-danger {
+    @apply bg-ark-red text-white hover:bg-ark-red-light;
+  }
+
+  .h-button-warning {
+    @apply bg-ark-yellow text-ark-bg hover:bg-ark-yellow-light;
+  }
+
+  .h-button::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 bg-gradient-to-r from-holo-blue/20 to-holo-purple/20 transition-opacity duration-300;
+    pointer-events: none;
+  }
+
+  .h-button:hover::after {
+    @apply opacity-80;
+  }
+
+  .h-input {
+    @apply bg-ark-active border border-ark-border rounded-ark px-3 py-2 text-ark-text placeholder-ark-text-muted w-full focus:outline-none focus:ring-1 focus:ring-ark-accent;
+    transition: all 0.3s ease;
+  }
+
+  .h-input:focus {
+    box-shadow: 0 0 0 1px theme('colors.ark.accent'), 0 0 10px theme('colors.holo.blue');
+  }
+
+  .h-toast {
+    @apply fixed top-4 right-4 p-4 rounded-ark shadow-ark-lg max-w-md bg-ark-panel border border-ark-border;
+    backdrop-filter: blur(10px);
+  }
+
+  .h-holographic {
+    @apply relative overflow-hidden bg-gradient-to-br from-holo-blue/30 to-holo-purple/30 backdrop-blur-sm border border-white/10 rounded-lg p-4 shadow-holographic animate-holographic;
+  }
+
+  .h-holographic::before {
+    content: '';
+    @apply absolute inset-0 bg-holographic-gradient bg-[length:200%_200%] opacity-30 mix-blend-overlay animate-holo-shift pointer-events-none;
+  }
+
+  .h-holographic::after {
+    content: '';
+    @apply absolute inset-0 bg-scan-line bg-[size:100%_6px] animate-scan opacity-20 pointer-events-none;
+  }
+  
+  .h-grid-bg {
+    @apply relative;
+    background-size: 30px 30px;
+    background-image: linear-gradient(to right, rgba(0, 194, 255, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 194, 255, 0.1) 1px, transparent 1px);
+  }
+  
+  .h-terminal {
+    @apply bg-ark-bg font-mono text-holo-blue text-sm p-4 rounded-ark border border-ark-border overflow-hidden;
+    position: relative;
+  }
+  
+  .h-terminal::before {
+    content: '';
+    @apply absolute inset-0 bg-scan-line bg-[size:100%_2px] animate-scan opacity-10 pointer-events-none;
+  }
+  
+  .h-glow-text {
+    @apply text-holo-blue;
+    text-shadow: 0 0 10px theme('colors.holo.blue');
+  }
+  
+  .h-tech-panel {
+    @apply bg-ark-panel border border-ark-border rounded-ark p-4 relative overflow-hidden;
+  }
+  
+  .h-tech-panel::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-holo-blue via-holo-purple to-holo-pink;
+    opacity: 0.8;
+  }
+  
+  .h-scanner {
+    @apply relative overflow-hidden;
+  }
+  
+  .h-scanner::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(0, 194, 255, 0.15) 50%, 
+                transparent 100%);
+    height: 20%;
+    animation: scan-vertical 2s ease-in-out infinite;
+  }
+  
+  .h-floating {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .h-holo-border {
+    @apply border rounded-ark;
+    border-image: linear-gradient(45deg, theme('colors.holo.blue'), theme('colors.holo.purple'), theme('colors.holo.pink'), theme('colors.holo.blue')) 1;
+    animation: holo-shift 8s ease-in-out infinite alternate;
+  }
+} 
