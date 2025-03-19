@@ -20,12 +20,6 @@
     <div class="holographic-panel-body">
       <slot></slot>
     </div>
-    
-    <!-- 边角装饰 -->
-    <div class="corner-decoration top-left"></div>
-    <div class="corner-decoration top-right"></div>
-    <div class="corner-decoration bottom-left"></div>
-    <div class="corner-decoration bottom-right"></div>
   </div>
 </template>
 
