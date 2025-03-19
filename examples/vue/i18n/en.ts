@@ -94,7 +94,7 @@ export default {
     delete: 'Delete',
     refresh: 'Refresh',
     loading: 'Loading State',
-    loadingStateDesc: 'Buttons in loading state',
+    loadingButtonDesc: 'Buttons in loading state',
     loadingPrimary: 'Loading Primary',
     loadingHolo: 'Loading Holographic',
     block: 'Block Button',

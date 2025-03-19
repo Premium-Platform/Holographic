@@ -100,7 +100,7 @@
       </HTechPanel>
 
       <!-- 加载状态 -->
-      <HTechPanel :title="$t('button.loading')" :subtitle="$t('button.loadingDesc')" variant="bordered">
+      <HTechPanel :title="$t('button.loading')" :subtitle="$t('button.loadingButtonDesc')" variant="bordered">
         <div class="panel-content">
           <div class="button-container">
             <Button loading>{{ $t('button.loading') }}</Button>
