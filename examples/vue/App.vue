@@ -2,7 +2,17 @@
   <div>
     <!-- 加载动画 -->
     <div v-if="isLoading" class="loading-container">
-      <LoadingAnimation theme="ark" variant="holographic" size="100" />
+      <LoadingAnimation 
+        theme="ark" 
+        variant="holographic" 
+        size="100%" 
+        title="HOLOGRAPHIC" 
+        :messages="loadingMessages"
+        showProgress
+        showDataStream
+        :autoProgress="true"
+        @complete="onLoadingComplete"
+      />
     </div>
 
     <!-- 主应用 -->
@@ -85,11 +95,24 @@ const changeLocale = () => {
 // 加载状态
 const isLoading = ref(true);
 
+// 加载消息列表
+const loadingMessages = [
+  'Initializing holographic system...',
+  'Loading component modules...',
+  'Calibrating visual interface...',
+  'Synchronizing holographic projections...',
+  'System ready'
+];
+
+// 加载完成的处理函数
+const onLoadingComplete = () => {
+  isLoading.value = false;
+};
+
 // 模拟加载过程
 onMounted(() => {
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 2000);
+  // 让加载动画展示完整进度条
+  // 由于我们设置了autoProgress，不需要手动控制进度
 });
 
 // 主题设置
@@ -132,6 +155,8 @@ const navGroups = computed(() => {
   @apply fixed inset-0 flex items-center justify-center;
   background-color: #0c1219;
   z-index: 100;
+  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* 主应用样式 */
