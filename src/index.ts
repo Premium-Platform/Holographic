@@ -29,6 +29,9 @@ import Container from './components/layout/Container.vue';
 import Grid from './components/layout/Grid.vue';
 // import Space from './components/layout/Space.vue';
 import Divider from './components/layout/Divider.vue';
+import TechPanel from './components/layout/TechPanel.vue';
+import HolographicPanel from './components/layout/HolographicPanel.vue';
+import InfoPanel from './components/layout/InfoPanel.vue';
 
 // 导航组件
 // import Tabs from './components/navigation/Tabs.vue';
@@ -55,6 +58,9 @@ const components: [string, any][] = [
   ['HContainer', Container],
   ['HGrid', Grid],
   ['HDivider', Divider],
+  ['HTechPanel', TechPanel],
+  ['HHolographicPanel', HolographicPanel],
+  ['HInfoPanel', InfoPanel],
   ['HNfcAnimation', HolographicNfcAnimation],
   ['HColorTag', ColorTag],
   ['HTerminalOutput', TerminalOutput],
@@ -87,6 +93,9 @@ export {
   Grid,
   // Space,
   Divider,
+  TechPanel,
+  HolographicPanel,
+  InfoPanel,
   // Tabs,
   // Accordion,
   // LanguageSelector,

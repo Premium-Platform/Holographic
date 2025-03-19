@@ -1,100 +1,198 @@
 <template>
-  <div class="component-panel">
-    <div class="component-title">
-      <h3>{{ $t('input.title') }}</h3>
-      <span class="component-version">5.17.0</span>
-    </div>
+  <div class="component-page">
+    <HHolographicPanel :title="$t('input.title')" :subtitle="$t('input.subtitle')" class="mb-6">
+      <div class="mb-4">
+        <p class="text-ark-text-secondary">{{ $t('input.description') }}</p>
+      </div>
+      
+      <HInfoPanel :title="$t('input.usage')" type="code">
+        {{ $t('input.usageDescription') }}
+      </HInfoPanel>
+    </HHolographicPanel>
 
-    <!-- 基本用法展示 -->
-    <div class="demo-section">
-      <div class="component-subtitle">{{ $t('input.basicUsage') }}</div>
-      <div class="preview">
-        <div class="space-y-4">
-          <Input :theme="currentTheme" :placeholder="$t('input.basicPlaceholder')" />
-          <Input :theme="currentTheme" :placeholder="$t('input.labelInput')" :label="$t('input.label')" />
-          <Input :theme="currentTheme" :placeholder="$t('input.clearable')" clearable :value="$t('input.clearableContent')" />
+    <!-- 基础输入框 -->
+    <HTechPanel :title="$t('input.basic')" :subtitle="$t('input.basicDesc')" version="5.0.0" variant="elevated" class="mb-6">
+      <div class="p-8 space-y-8">
+        <div>
+          <h3 class="text-lg text-ark-text mb-4">{{ $t('input.default') }}</h3>
+          <div class="flex flex-col gap-4 bg-ark-active p-6 rounded-ark">
+            <Input :placeholder="$t('input.defaultPlaceholder')" />
+            <Input :placeholder="$t('input.disabledPlaceholder')" disabled />
+            <Input :placeholder="$t('input.prefixPlaceholder')" />
+            <Input :placeholder="$t('input.suffixPlaceholder')" />
+            <Input :placeholder="$t('input.clearablePlaceholder')" clearable />
+            <Input type="password" :placeholder="$t('input.passwordPlaceholder')" />
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- 不同状态展示 -->
-    <div class="demo-section">
-      <div class="component-subtitle">{{ $t('input.states') }}</div>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="preview">
-          <Input :theme="currentTheme" :placeholder="$t('input.disabled')" disabled />
-        </div>
-        <div class="preview">
-          <Input :theme="currentTheme" :placeholder="$t('input.readonly')" readonly :value="$t('input.readonlyContent')" />
-        </div>
-        <div class="preview">
-          <Input :theme="currentTheme" :placeholder="$t('input.error')" :error="$t('input.errorMessage')" />
-        </div>
-        <div class="preview">
-          <Input :theme="currentTheme" :placeholder="$t('input.holographic')" holographic />
+    </HTechPanel>
+    
+    <!-- 全息输入框 -->
+    <HTechPanel :title="$t('input.holographic')" :subtitle="$t('input.holographicDesc')" version="5.0.0" variant="elevated" class="mb-6">
+      <div class="p-8 space-y-8">
+        <div>
+          <h3 class="text-lg text-ark-text mb-4">{{ $t('input.holographicStyle') }}</h3>
+          <div class="flex flex-col gap-4 bg-ark-active p-6 rounded-ark">
+            <Input :placeholder="$t('input.holographicPlaceholder')" holographic />
+            <Input :placeholder="$t('input.glowPlaceholder')" holographic animated />
+            <Input :placeholder="$t('input.successPlaceholder')" holographic status="success" />
+            <Input :placeholder="$t('input.errorPlaceholder')" holographic status="error" />
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- 尺寸变体 -->
-    <div class="demo-section">
-      <div class="component-subtitle">{{ $t('input.sizes') }}</div>
-      <div class="space-y-4">
-        <Input :theme="currentTheme" :placeholder="$t('input.small')" size="small" />
-        <Input :theme="currentTheme" :placeholder="$t('input.medium')" size="medium" />
-        <Input :theme="currentTheme" :placeholder="$t('input.large')" size="large" />
+    </HTechPanel>
+    
+    <!-- 输入框尺寸 -->
+    <HTechPanel :title="$t('input.size')" :subtitle="$t('input.sizeDesc')" variant="bordered" class="mb-6">
+      <div class="p-8">
+        <div class="flex flex-col gap-4 bg-ark-active p-6 rounded-ark">
+          <Input :placeholder="$t('input.xsPlaceholder')" size="small" />
+          <Input :placeholder="$t('input.smPlaceholder')" size="small" />
+          <Input :placeholder="$t('input.mdPlaceholder')" size="medium" />
+          <Input :placeholder="$t('input.lgPlaceholder')" size="large" />
+          <Input :placeholder="$t('input.xlPlaceholder')" size="large" />
+        </div>
       </div>
-    </div>
-
-    <!-- 全息效果 -->
-    <div class="demo-section">
-      <div class="component-subtitle">{{ $t('input.holographicEffect') }}</div>
-      <div class="preview">
-        <Input :theme="currentTheme" :placeholder="$t('input.holographic')" holographic />
+    </HTechPanel>
+    
+    <!-- 组合输入框 -->
+    <HTechPanel :title="$t('input.combination')" :subtitle="$t('input.combinationDesc')" variant="bordered" class="mb-6">
+      <div class="p-8">
+        <div class="flex flex-col gap-4 bg-ark-active p-6 rounded-ark">
+          <Input :placeholder="$t('input.prefixTemplate')" />
+          <Input :placeholder="$t('input.suffixTemplate')" />
+          <Input :placeholder="$t('input.bothTemplate')" />
+        </div>
       </div>
-    </div>
+    </HTechPanel>
+    
+    <!-- 状态输入框 -->
+    <HTechPanel :title="$t('input.status')" :subtitle="$t('input.statusDesc')" variant="bordered" class="mb-6">
+      <div class="p-8">
+        <div class="flex flex-col gap-4 bg-ark-active p-6 rounded-ark">
+          <Input :placeholder="$t('input.successStatus')" status="success" />
+          <Input :placeholder="$t('input.warningStatus')" status="warning" />
+          <Input :placeholder="$t('input.errorStatus')" status="error" />
+          <Input :placeholder="$t('input.loadingStatus')" loading />
+        </div>
+      </div>
+    </HTechPanel>
+    
+    <!-- 文本域 -->
+    <HTechPanel :title="$t('input.textarea')" :subtitle="$t('input.textareaDesc')" variant="bordered" class="mb-6">
+      <div class="p-8">
+        <div class="flex flex-col gap-4 bg-ark-active p-6 rounded-ark">
+          <Input type="textarea" :placeholder="$t('input.textareaPlaceholder')" />
+          <Input type="textarea" :placeholder="$t('input.holographicTextarea')" holographic />
+          <Input type="textarea" :placeholder="$t('input.autoResizeTextarea')" auto-size />
+        </div>
+      </div>
+    </HTechPanel>
+    
+    <!-- 属性配置 -->
+    <HTechPanel :title="$t('input.props')" variant="bordered">
+      <div class="p-4 overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-ark-border">
+              <th class="text-left py-3 px-4 text-ark-accent">{{ $t('common.propName') }}</th>
+              <th class="text-left py-3 px-4 text-ark-accent">{{ $t('common.propType') }}</th>
+              <th class="text-left py-3 px-4 text-ark-accent">{{ $t('common.defaultValue') }}</th>
+              <th class="text-left py-3 px-4 text-ark-accent">{{ $t('common.description') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">type</td>
+              <td class="py-3 px-4">String</td>
+              <td class="py-3 px-4">'text'</td>
+              <td class="py-3 px-4">{{ $t('input.typeDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">variant</td>
+              <td class="py-3 px-4">String</td>
+              <td class="py-3 px-4">'default'</td>
+              <td class="py-3 px-4">{{ $t('input.variantDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">size</td>
+              <td class="py-3 px-4">String</td>
+              <td class="py-3 px-4">'medium'</td>
+              <td class="py-3 px-4">{{ $t('input.sizeOptionDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">placeholder</td>
+              <td class="py-3 px-4">String</td>
+              <td class="py-3 px-4">''</td>
+              <td class="py-3 px-4">{{ $t('input.placeholderDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">value</td>
+              <td class="py-3 px-4">String</td>
+              <td class="py-3 px-4">''</td>
+              <td class="py-3 px-4">{{ $t('input.valueDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">disabled</td>
+              <td class="py-3 px-4">Boolean</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.disabledDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">readonly</td>
+              <td class="py-3 px-4">Boolean</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.readonlyDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">clearable</td>
+              <td class="py-3 px-4">Boolean</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.clearableDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">status</td>
+              <td class="py-3 px-4">String</td>
+              <td class="py-3 px-4">''</td>
+              <td class="py-3 px-4">{{ $t('input.statusDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">holographic</td>
+              <td class="py-3 px-4">Boolean</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.holographicPropDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">animated</td>
+              <td class="py-3 px-4">Boolean</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.animatedDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">loading</td>
+              <td class="py-3 px-4">Boolean</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.loadingDesc') }}</td>
+            </tr>
+            <tr class="border-b border-ark-border">
+              <td class="py-3 px-4">auto-size</td>
+              <td class="py-3 px-4">Boolean/Object</td>
+              <td class="py-3 px-4">false</td>
+              <td class="py-3 px-4">{{ $t('input.autoSizeDesc') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </HTechPanel>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { Input } from '../../../../src/index';
-
-defineProps<{
-  currentTheme: 'ark';
-}>();
 </script>
 
 <style scoped>
-.component-panel {
-  @apply bg-gray-900 text-white rounded-lg border border-gray-800 overflow-hidden;
-}
-
-.component-title {
-  @apply flex justify-between items-center px-6 py-4 border-b border-gray-800;
-}
-
-.component-title h3 {
-  @apply text-xl font-medium;
-}
-
-.component-version {
-  @apply text-xs py-0.5 px-1.5 rounded bg-blue-950 text-blue-400;
-}
-
-.component-subtitle {
-  @apply text-sm font-medium text-gray-300 mb-2;
-}
-
-.demo-section {
-  @apply px-6 py-4 border-b border-gray-800;
-}
-
-.demo-section:last-child {
-  @apply border-0;
-}
-
-.preview {
-  @apply p-4 bg-gray-800 rounded;
+.component-page {
+  @apply max-w-full;
 }
 </style> 
