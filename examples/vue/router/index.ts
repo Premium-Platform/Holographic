@@ -12,6 +12,7 @@ import InputPanel from '../components/panels/InputPanel.vue';
 import SwitchPanel from '../components/panels/SwitchPanel.vue';
 import LayoutPanel from '../components/panels/LayoutPanel.vue';
 import VisualPanel from '../components/panels/VisualPanel.vue';
+import IconsPanel from '../components/icons/IconsPanel.vue';
 
 // 定义路由
 const routes: Array<RouteRecordRaw> = [
@@ -81,6 +82,12 @@ const routes: Array<RouteRecordRaw> = [
     component: VisualPanel,
     props: { activeComponent: 'loading-animation' },
     meta: { category: '视觉', title: 'LoadingAnimation 加载', version: '5.0.0' }
+  },
+  {
+    path: '/components/icons',
+    name: 'Icons',
+    component: IconsPanel,
+    meta: { category: '视觉', title: 'Icons 图标', version: '5.0.0' }
   },
   {
     path: '/components/holographic-animation',

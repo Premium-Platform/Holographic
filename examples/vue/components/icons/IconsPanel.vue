@@ -3,7 +3,7 @@
     <div class="icon-gallery">
       <div class="icon-item" v-for="icon in icons" :key="icon">
         <div class="icon-preview">
-          <SvgIcon :name="icon" :size="32" />
+          <InlineSvgIcon :name="icon" :size="32" />
         </div>
         <div class="icon-name">{{ icon }}</div>
       </div>
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import SvgIcon from '../../../../src/components/icons/SvgIcon.vue';
+import InlineSvgIcon from '../../../../src/components/icons/InlineSvgIcon.vue';
 
 // 图标名称列表
 const icons = ref([
@@ -46,7 +46,7 @@ const icons = ref([
 
 .icon-preview {
   @apply mb-3 p-2 rounded-full;
-  @apply bg-ark-panel-light bg-opacity-30;
+  @apply bg-ark-panel bg-opacity-30;
   @apply flex items-center justify-center;
   @apply w-12 h-12;
   @apply text-ark-accent;
