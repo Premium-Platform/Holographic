@@ -23,7 +23,8 @@
         {
           'h-switch-checked': modelValue,
           'h-switch-disabled': disabled,
-          'h-switch-holographic': holographic
+          'h-switch-holographic': holographic,
+          'h-switch-animated': animated
         },
         customClass
       ]"
@@ -90,6 +91,10 @@ export interface SwitchProps {
    * 全息效果
    */
   holographic?: boolean;
+  /**
+   * 动画效果
+   */
+  animated?: boolean;
 }
 
 const props = withDefaults(defineProps<SwitchProps>(), {
@@ -102,7 +107,8 @@ const props = withDefaults(defineProps<SwitchProps>(), {
   checkedIcon: undefined,
   uncheckedIcon: undefined,
   customClass: '',
-  holographic: false
+  holographic: false,
+  animated: false
 });
 
 const emit = defineEmits<{
@@ -254,13 +260,63 @@ const toggle = () => {
 /* 全息效果 */
 .h-switch-holographic .h-switch-track {
   backdrop-filter: blur(5px);
+  @apply border border-ark-border/30 bg-ark-bg/20;
 }
 
 .h-switch-holographic.h-switch-ark {
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.2);
+  @apply border border-ark-border/70;
+}
+
+.h-switch-holographic.h-switch-ark .h-switch-thumb {
+  box-shadow: 0 0 4px rgba(56, 189, 248, 0.4);
+  @apply bg-white/90 border border-ark-accent/30;
 }
 
 .h-switch-holographic.h-switch-ark.h-switch-checked {
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  @apply bg-ark-accent/80 border-ark-accent/70;
+}
+
+.h-switch-holographic.h-switch-ark.h-switch-checked .h-switch-track {
+  @apply bg-ark-accent/80;
+}
+
+.h-switch-holographic.h-switch-ark.h-switch-checked .h-switch-thumb {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+  @apply bg-white border-white/70;
+}
+
+/* 动画效果 */
+.h-switch-animated.h-switch-holographic.h-switch-ark.h-switch-checked {
+  animation: pulse-glow 2s infinite;
+}
+
+.h-switch-animated.h-switch-holographic.h-switch-ark.h-switch-checked .h-switch-thumb {
+  animation: thumb-pulse 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+  }
+}
+
+@keyframes thumb-pulse {
+  0% {
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+  }
 }
 </style> 
