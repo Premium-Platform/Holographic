@@ -1,3 +1,11 @@
+<!--
+ * @Author: SpenserCai
+ * @Date: 2025-03-19 12:46:30
+ * @version: 
+ * @LastEditors: SpenserCai
+ * @LastEditTime: 2025-03-19 13:21:31
+ * @Description: file content
+-->
 <template>
   <HTechPanel :title="$t('icons.title')" :subtitle="$t('icons.description')" variant="elevated">
     <div class="icon-gallery">
