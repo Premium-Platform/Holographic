@@ -55,7 +55,7 @@ export interface ButtonProps {
   /**
    * 按钮变体
    */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'neon' | 'cyber' | 'dark';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'neon' | 'cyber' | 'dark' | 'warning' | 'danger' | 'success';
   /**
    * 按钮主题
    */
@@ -202,6 +202,48 @@ const handleClick = (event: MouseEvent) => {
   box-shadow: 0 0 10px rgba(100, 100, 100, 0.1);
 }
 
+.h-button-warning {
+  @apply bg-transparent text-yellow-300;
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  background: rgba(60, 50, 0, 0.3);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.2), inset 0 0 5px rgba(251, 191, 36, 0.1);
+}
+
+.h-button-warning:hover {
+  border-color: rgba(251, 191, 36, 0.8);
+  background: rgba(70, 60, 0, 0.4);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), inset 0 0 10px rgba(251, 191, 36, 0.2);
+}
+
+.h-button-danger {
+  @apply bg-transparent text-red-400;
+  border: 1px solid rgba(220, 38, 38, 0.6);
+  background: rgba(60, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.2), inset 0 0 5px rgba(220, 38, 38, 0.1);
+}
+
+.h-button-danger:hover {
+  border-color: rgba(220, 38, 38, 0.8);
+  background: rgba(70, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.4), inset 0 0 10px rgba(220, 38, 38, 0.2);
+}
+
+.h-button-success {
+  @apply bg-transparent text-green-400;
+  border: 1px solid rgba(34, 197, 94, 0.6);
+  background: rgba(0, 60, 30, 0.3);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.2), inset 0 0 5px rgba(34, 197, 94, 0.1);
+}
+
+.h-button-success:hover {
+  border-color: rgba(34, 197, 94, 0.8);
+  background: rgba(0, 70, 40, 0.4);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.4), inset 0 0 10px rgba(34, 197, 94, 0.2);
+}
+
 .h-button-ghost {
   @apply bg-transparent text-gray-300;
   border: 1px solid rgba(100, 100, 100, 0.2);
@@ -317,7 +359,10 @@ const handleClick = (event: MouseEvent) => {
 .h-button-ghost.h-button-holographic,
 .h-button-dark.h-button-holographic,
 .h-button-cyber.h-button-holographic,
-.h-button-neon.h-button-holographic {
+.h-button-neon.h-button-holographic,
+.h-button-warning.h-button-holographic,
+.h-button-danger.h-button-holographic,
+.h-button-success.h-button-holographic {
   background: rgba(0, 20, 40, 0.2);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 194, 255, 0.4);
@@ -469,5 +514,44 @@ const handleClick = (event: MouseEvent) => {
 @keyframes pulse-subtle {
   0%, 100% { box-shadow: 0 0 5px rgba(0, 194, 255, 0.4); }
   50% { box-shadow: 0 0 15px rgba(0, 194, 255, 0.7); }
+}
+
+/* 全息警告按钮 */
+.h-button-warning.h-button-holographic {
+  border: 1px solid rgba(251, 191, 36, 0.7);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.3), inset 0 0 8px rgba(251, 191, 36, 0.1);
+  color: rgba(251, 191, 36, 0.9);
+  text-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+}
+
+.h-button-warning.h-button-holographic:hover {
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.5), inset 0 0 12px rgba(251, 191, 36, 0.2);
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.7);
+}
+
+/* 全息危险按钮 */
+.h-button-danger.h-button-holographic {
+  border: 1px solid rgba(220, 38, 38, 0.7);
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.3), inset 0 0 8px rgba(220, 38, 38, 0.1);
+  color: rgba(220, 38, 38, 0.9);
+  text-shadow: 0 0 5px rgba(220, 38, 38, 0.5);
+}
+
+.h-button-danger.h-button-holographic:hover {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), inset 0 0 12px rgba(220, 38, 38, 0.2);
+  text-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
+}
+
+/* 全息成功按钮 */
+.h-button-success.h-button-holographic {
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.3), inset 0 0 8px rgba(34, 197, 94, 0.1);
+  color: rgba(34, 197, 94, 0.9);
+  text-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+}
+
+.h-button-success.h-button-holographic:hover {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), inset 0 0 12px rgba(34, 197, 94, 0.2);
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
 }
 </style> 

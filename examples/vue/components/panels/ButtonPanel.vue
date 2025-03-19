@@ -20,7 +20,10 @@
             <div class="button-container">
               <Button>{{ $t('button.default') }}</Button>
               <Button variant="primary">{{ $t('button.primary') }}</Button>
-              <Button variant="secondary">{{ $t('button.success') }}</Button>
+              <Button variant="secondary">{{ $t('button.secondary') }}</Button>
+              <Button variant="success">{{ $t('button.success') }}</Button>
+              <Button variant="warning">{{ $t('button.warning') }}</Button>
+              <Button variant="danger">{{ $t('button.danger') }}</Button>
             </div>
           </div>
         </div>
@@ -34,7 +37,10 @@
             <div class="button-container">
               <Button holographic>{{ $t('button.holographic') }}</Button>
               <Button variant="primary" holographic>{{ $t('button.primary') }}</Button>
-              <Button variant="secondary" holographic>{{ $t('button.success') }}</Button>
+              <Button variant="secondary" holographic>{{ $t('button.secondary') }}</Button>
+              <Button variant="success" holographic>{{ $t('button.success') }}</Button>
+              <Button variant="warning" holographic>{{ $t('button.warning') }}</Button>
+              <Button variant="danger" holographic>{{ $t('button.danger') }}</Button>
             </div>
           </div>
         </div>
@@ -72,7 +78,7 @@
               <div class="button-container">
                 <Button size="small">{{ $t('button.default') }}</Button>
                 <Button variant="primary" size="small">{{ $t('button.primary') }}</Button>
-                <Button variant="secondary" size="small">{{ $t('button.success') }}</Button>
+                <Button variant="secondary" size="small">{{ $t('button.secondary') }}</Button>
               </div>
             </div>
             
@@ -81,7 +87,7 @@
               <div class="button-container">
                 <Button size="large">{{ $t('button.default') }}</Button>
                 <Button variant="primary" size="large">{{ $t('button.primary') }}</Button>
-                <Button variant="secondary" size="large">{{ $t('button.success') }}</Button>
+                <Button variant="secondary" size="large">{{ $t('button.secondary') }}</Button>
               </div>
             </div>
           </div>
