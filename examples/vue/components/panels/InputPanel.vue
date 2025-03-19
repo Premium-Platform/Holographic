@@ -239,7 +239,7 @@ import { Input } from '../../../../src/index';
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  background-color: var(--ark-active, #22272E);
+  background-color: var(--ark-hover, #1C2128);
   padding: 1.5rem;
   border-radius: 6px;
 }
