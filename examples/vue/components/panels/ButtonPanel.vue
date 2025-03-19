@@ -52,9 +52,6 @@
           <div>
             <h3 class="text-lg text-ark-text mb-4">{{ $t('button.iconsAndButtons') }}</h3>
             <div class="button-container">
-              <Button><template #prefix><i class="ri-add-line" /></template>{{ $t('button.withPrefix') }}</Button>
-              <Button variant="primary"><template #suffix><i class="ri-arrow-right-line" /></template>{{ $t('button.withSuffix') }}</Button>
-              <Button variant="secondary" holographic><i class="ri-download-line" /></Button>
               <Button variant="primary">
                 <InlineSvgIcon name="chip" :size="20" />
                 <span class="ml-2">{{ $t('button.withChipIcon') }}</span>
@@ -63,8 +60,16 @@
                 <InlineSvgIcon name="chip" :size="20" />
                 <span class="ml-2">{{ $t('button.chip') }}</span>
               </Button>
+              <Button variant="primary">
+                <span class="ml-2">{{ $t('button.withChipIcon') }}</span>
+                <InlineSvgIcon name="chip" :size="20" :position="'suffix'" />
+              </Button>
+              <Button variant="success">
+                <span class="mr-2">{{ $t('button.chip') }}</span>
+                <InlineSvgIcon name="chip" :size="20" :position="'suffix'" />
+              </Button>
               <Button variant="cyber" holographic>
-                <InlineSvgIcon name="chip" :size="20" />
+                <InlineSvgIcon name="chip" :size="20" :spacing="0"/>
               </Button>
             </div>
           </div>

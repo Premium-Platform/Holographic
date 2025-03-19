@@ -1,5 +1,17 @@
 <template>
-  <span class="h-inline-svg-icon" :style="{ width: `${size}px`, height: `${size}px` }">
+  <span 
+    class="h-inline-svg-icon" 
+    :class="[
+      `h-inline-svg-icon-${position}`,
+      customClass
+    ]" 
+    :style="{ 
+      width: `${size}px`, 
+      height: `${size}px`,
+      marginLeft: position === 'suffix' ? `${spacing}px` : undefined,
+      marginRight: position === 'prefix' ? `${spacing}px` : undefined
+    }"
+  >
     <!-- 芯片图标 -->
     <svg v-if="name === 'chip'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
       :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -138,6 +150,28 @@ defineProps({
   stroke: {
     type: String,
     default: 'currentColor'
+  },
+  /**
+   * 位置：前缀或后缀
+   */
+  position: {
+    type: String,
+    default: 'prefix',
+    validator: (value: string) => ['prefix', 'suffix', 'standalone'].includes(value)
+  },
+  /**
+   * 间距：与相邻内容的间距（像素）
+   */
+  spacing: {
+    type: [String, Number],
+    default: 8
+  },
+  /**
+   * 自定义类名
+   */
+  customClass: {
+    type: String,
+    default: ''
   }
 });
 </script>
@@ -154,5 +188,20 @@ defineProps({
   align-items: center;
   min-width: 1em;
   min-height: 1em;
+}
+
+/* 前缀图标固定间距 */
+.h-inline-svg-icon-prefix {
+  /* marginRight在style内联样式中设置 */
+}
+
+/* 后缀图标固定间距 */
+.h-inline-svg-icon-suffix {
+  /* marginLeft在style内联样式中设置 */
+}
+
+/* 独立图标不需要额外间距 */
+.h-inline-svg-icon-standalone {
+  /* 不添加额外间距 */
 }
 </style> 
