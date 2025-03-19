@@ -310,7 +310,7 @@ const handleClick = (event: MouseEvent) => {
 
 /* 加载指示器 */
 .h-button-loading-indicator {
-  @apply flex items-center space-x-1;
+  @apply flex items-center space-x-1 mr-2;
 }
 
 .indicator-dot {
