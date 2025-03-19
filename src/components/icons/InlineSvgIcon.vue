@@ -74,9 +74,12 @@
 
     <!-- 安全图标 -->
     <svg v-else-if="name === 'security'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
-      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"></path>
-      <path d="M12 9l3 3-3 3-3-3 3-3z"></path>
+      :fill="fill" :stroke="stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 护盾外形 -->
+      <path d="M12 22c-1.7-0.5-8-2.8-8-11V5l8-3 8 3v6c0 8.2-6.3 10.5-8 11z"></path>
+      <!-- 中心标记 -->
+      <path d="M12 8v5"></path>
+      <circle cx="12" cy="16" r="1"></circle>
     </svg>
 
     <!-- 人工智能图标 -->
@@ -143,5 +146,13 @@ defineProps({
 .h-inline-svg-icon {
   @apply inline-block align-middle;
   color: currentColor;
+  vertical-align: -0.125em;
+  overflow: visible;
+  line-height: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1em;
+  min-height: 1em;
 }
 </style> 
