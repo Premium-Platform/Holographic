@@ -55,6 +55,17 @@
               <Button><template #prefix><i class="ri-add-line" /></template>{{ $t('button.withPrefix') }}</Button>
               <Button variant="primary"><template #suffix><i class="ri-arrow-right-line" /></template>{{ $t('button.withSuffix') }}</Button>
               <Button variant="secondary" holographic><i class="ri-download-line" /></Button>
+              <Button variant="primary">
+                <InlineSvgIcon name="chip" :size="20" />
+                <span class="ml-2">{{ $t('button.withChipIcon') }}</span>
+              </Button>
+              <Button variant="success">
+                <InlineSvgIcon name="chip" :size="20" />
+                <span class="ml-2">{{ $t('button.chip') }}</span>
+              </Button>
+              <Button variant="cyber" holographic>
+                <InlineSvgIcon name="chip" :size="20" />
+              </Button>
             </div>
           </div>
         </div>
@@ -225,6 +236,7 @@
 
 <script setup lang="ts">
 import { Button } from '../../../../src/index';
+import { InlineSvgIcon } from '../../../../src/components/icons';
 </script>
 
 <style scoped>

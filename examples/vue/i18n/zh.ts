@@ -118,6 +118,8 @@ export default {
     iconsAndButtons: '图标位置',
     withPrefix: '前缀图标',
     withSuffix: '后缀图标',
+    withChipIcon: '带芯片图标',
+    chip: '芯片',
     props: '属性配置',
     typeDesc: '按钮类型: default, primary, success, warning, danger, info',
     variantDesc: '按钮变体: primary, secondary, ghost, neon, cyber, dark, warning, danger, success',
@@ -344,5 +346,18 @@ export default {
       themes: '主题变体',
       sizes: '尺寸变体'
     }
+  },
+  icons: {
+    title: '图标库',
+    description: '一套现代化的高科技全息图标集合',
+    chip: '芯片',
+    circuit: '电路',
+    server: '服务器',
+    data: '数据',
+    network: '网络',
+    hologram: '全息',
+    security: '安全',
+    ai: '人工智能',
+    cloud: '云计算'
   }
 } 

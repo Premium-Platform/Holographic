@@ -118,6 +118,8 @@ export default {
     iconsAndButtons: 'Icon Placements',
     withPrefix: 'Prefix Icon',
     withSuffix: 'Suffix Icon',
+    withChipIcon: 'With Chip Icon',
+    chip: 'Microchip',
     props: 'Properties',
     typeDesc: 'Button type: default, primary, success, warning, danger, info',
     variantDesc: 'Button variant: primary, secondary, ghost, neon, cyber, dark, warning, danger, success',

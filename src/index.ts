@@ -44,6 +44,11 @@ import ColorTag from './components/visual/ColorTag.vue';
 import TerminalOutput from './components/visual/TerminalOutput.vue';
 import LoadingAnimation from './components/visual/LoadingAnimation.vue';
 
+// 图标组件
+import SvgIcon from './components/icons/SvgIcon.vue';
+import IconWrapper from './components/icons/IconWrapper.vue';
+import InlineSvgIcon from './components/icons/InlineSvgIcon.vue';
+
 // 为组件定义名称
 type ComponentWithName = { name?: string; __name?: string; __file?: string };
 
@@ -65,6 +70,7 @@ const components: [string, any][] = [
   ['HColorTag', ColorTag],
   ['HTerminalOutput', TerminalOutput],
   ['HLoadingAnimation', LoadingAnimation],
+  ['HSvgIcon', SvgIcon],
 ];
 
 // 插件安装方法
@@ -74,10 +80,8 @@ const install = (app: App): void => {
   });
 };
 
-// 默认导出插件安装方法
-export default {
-  install,
-};
+// Vue插件定义
+export default { install };
 
 // 按需导出
 export {
@@ -103,4 +107,7 @@ export {
   ColorTag,
   TerminalOutput,
   LoadingAnimation,
+  SvgIcon,
+  IconWrapper,
+  InlineSvgIcon,
 }; 
