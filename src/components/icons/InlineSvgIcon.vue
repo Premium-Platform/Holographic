@@ -38,6 +38,64 @@
       <rect x="10" y="18" width="8" height="1"></rect>
     </svg>
 
+    <!-- 数据图标 -->
+    <svg v-else-if="name === 'data'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
+      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 17H3V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v12z"></path>
+      <path d="M6 9h.01"></path>
+      <path d="M6 12h.01"></path>
+      <path d="M6 15h.01"></path>
+      <rect x="9" y="8" width="9" height="2"></rect>
+      <rect x="9" y="11" width="6" height="2"></rect>
+      <rect x="9" y="14" width="8" height="2"></rect>
+      <path d="M3 17l2 4h14l2-4"></path>
+    </svg>
+
+    <!-- 网络图标 -->
+    <svg v-else-if="name === 'network'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
+      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="3" width="4" height="4" rx="1"></rect>
+      <rect x="15" y="13" width="4" height="4" rx="1"></rect>
+      <rect x="3" y="13" width="4" height="4" rx="1"></rect>
+      <rect x="11" y="18" width="4" height="4" rx="1"></rect>
+      <path d="M9 7v2c0 1 1 2 2 2h4"></path>
+      <path d="M17 13v-2c0-1-1-2-2-2h-2"></path>
+      <path d="M13 18v-2c0-1-1-2-2-2H7"></path>
+      <path d="M7 17h10"></path>
+    </svg>
+
+    <!-- 全息图标 -->
+    <svg v-else-if="name === 'hologram'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
+      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+      <path d="M2 17l10 5 10-5"></path>
+      <path d="M2 12l10 5 10-5"></path>
+    </svg>
+
+    <!-- 安全图标 -->
+    <svg v-else-if="name === 'security'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
+      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"></path>
+      <path d="M12 9l3 3-3 3-3-3 3-3z"></path>
+    </svg>
+
+    <!-- 人工智能图标 -->
+    <svg v-else-if="name === 'ai'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
+      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="5"></circle>
+      <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"></path>
+      <path d="M8 11v3"></path>
+      <path d="M16 11v3"></path>
+      <path d="M12 15v3"></path>
+    </svg>
+
+    <!-- 云图标 -->
+    <svg v-else-if="name === 'cloud'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
+      :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+      <path d="M13 15l-2 2m0 0l-2-2m2 2v-5"></path>
+    </svg>
+
     <!-- 其他图标... -->
     <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :width="size" :height="size"
       :fill="fill" :stroke="stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
