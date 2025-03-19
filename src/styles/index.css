@@ -97,13 +97,13 @@
   
   .h-grid-bg {
     @apply relative;
-    background-size: 30px 30px;
-    background-image: linear-gradient(to right, rgba(0, 194, 255, 0.1) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(0, 194, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
   }
   
   .h-terminal {
-    @apply bg-ark-bg font-mono text-holo-blue text-sm p-4 rounded-ark border border-ark-border overflow-hidden;
+    @apply bg-ark-panel font-mono text-ark-accent text-sm p-4 rounded-ark border border-ark-border overflow-hidden;
     position: relative;
   }
   
@@ -113,8 +113,8 @@
   }
   
   .h-glow-text {
-    @apply text-holo-blue;
-    text-shadow: 0 0 10px theme('colors.holo.blue');
+    @apply text-ark-accent;
+    text-shadow: 0 0 10px theme('colors.ark.accent');
   }
   
   .h-tech-panel {

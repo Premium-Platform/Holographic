@@ -153,7 +153,7 @@ const navGroups = computed(() => {
 <style scoped>
 .loading-container {
   @apply fixed inset-0 flex items-center justify-center;
-  background-color: #0c1219;
+  background-color: #0D1117;
   z-index: 100;
   overflow: hidden;
   min-height: 100vh;
@@ -164,8 +164,8 @@ const navGroups = computed(() => {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #0c1219;
-  color: #edf0f2;
+  background-color: #0D1117;
+  color: #C9D1D9;
 }
 
 .top-bar {
@@ -174,8 +174,8 @@ const navGroups = computed(() => {
   align-items: center;
   padding: 0 1.5rem;
   height: 4rem;
-  background-color: #0f1824;
-  border-bottom: 1px solid #1e2a3a;
+  background-color: #161B22;
+  border-bottom: 1px solid #21262D;
 }
 
 .logo {
@@ -188,7 +188,7 @@ const navGroups = computed(() => {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
-  background: linear-gradient(to right, #4dabf7, #228be6);
+  background: linear-gradient(to right, #38BDF8, #228be6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -209,28 +209,29 @@ const navGroups = computed(() => {
   border-radius: 0.25rem;
   font-size: 0.875rem;
   cursor: pointer;
-  background-color: transparent;
-  color: #a4b0be;
-  border: 1px solid #1e2a3a;
+  background-color: #1C2128;
+  color: #8B949E;
+  border: 1px solid #21262D;
 }
 
 .theme-btn.active {
-  background-color: #2e3c50;
-  color: #edf0f2;
+  background-color: #22272E;
+  color: #C9D1D9;
+  border-color: #38BDF8;
 }
 
 .version {
   font-size: 0.75rem;
-  color: #6c8096;
+  color: #6E7681;
   margin-left: 0.5rem;
 }
 
 .locale-selector {
   padding: 0.25rem;
   border-radius: 0.25rem;
-  background-color: #0f1824;
-  color: #edf0f2;
-  border: 1px solid #1e2a3a;
+  background-color: #161B22;
+  color: #C9D1D9;
+  border: 1px solid #21262D;
   margin-left: 0.5rem;
 }
 
@@ -242,8 +243,8 @@ const navGroups = computed(() => {
 
 .side-nav {
   width: 16rem;
-  background-color: #0f1824;
-  border-right: 1px solid #1e2a3a;
+  background-color: #161B22;
+  border-right: 1px solid #21262D;
   overflow-y: auto;
   padding: 1rem 0;
 }
@@ -256,7 +257,7 @@ const navGroups = computed(() => {
   padding: 0 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #6c8096;
+  color: #6E7681;
   margin-bottom: 0.5rem;
 }
 
@@ -266,33 +267,34 @@ const navGroups = computed(() => {
   align-items: center;
   padding: 0.5rem 1.5rem;
   text-decoration: none;
-  color: #a4b0be;
+  color: #8B949E;
   font-size: 0.9rem;
   transition: all 0.2s;
 }
 
 .nav-item:hover {
-  background-color: #1a2634;
-  color: #edf0f2;
+  background-color: #1C2128;
+  color: #C9D1D9;
 }
 
 .nav-item.active {
-  background-color: #2e3c50;
-  color: #edf0f2;
-  border-right: 3px solid #339af0;
+  background-color: #22272E;
+  color: #C9D1D9;
+  border-right: 3px solid #38BDF8;
 }
 
 .item-version {
   font-size: 0.7rem;
   padding: 0.1rem 0.4rem;
-  background-color: #1a2634;
+  background-color: #1C2128;
   border-radius: 0.25rem;
-  color: #6c8096;
+  color: #6E7681;
 }
 
 .content-area {
   flex: 1;
   overflow-y: auto;
   padding: 1.5rem;
+  background-color: #0D1117;
 }
 </style> 

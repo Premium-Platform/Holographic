@@ -42,6 +42,9 @@
       </div>
 
       <div v-else-if="variant === 'holographic'" class="loading-holographic">
+        <!-- 背景网格 -->
+        <div class="grid-background"></div>
+        
         <div class="holo-layer"></div>
         <div class="holo-layer"></div>
         <div class="holo-layer"></div>
@@ -261,6 +264,7 @@ defineExpose({
   overflow: hidden;
   padding: 2rem;
   box-sizing: border-box;
+  background-color: #0D1117;
 }
 
 .animation-wrapper {
@@ -271,14 +275,15 @@ defineExpose({
   max-width: 200px;
   height: 200px;
   margin: 2rem 0;
+  position: relative;
 }
 
 /* 主题样式 */
 .theme-ark {
-  --primary-color: #4dabf7;
+  --primary-color: #38BDF8;
   --secondary-color: #228be6;
   --tertiary-color: #1971c2;
-  --text-color: #edf0f2;
+  --text-color: #C9D1D9;
   --background-color: rgba(13, 17, 23, 0.9);
 }
 
@@ -317,6 +322,181 @@ defineExpose({
   transform: translateY(-50%);
   animation: scan-line 2s linear infinite;
   box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* 背景网格 */
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridMove 20s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+/* 全息加载 */
+.loading-holographic {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.holo-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: holo-rotate 3s linear infinite;
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.holo-layer:nth-child(2) {
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  border-color: var(--secondary-color);
+  animation-duration: 2.5s;
+  animation-direction: reverse;
+  box-shadow: 0 0 12px var(--secondary-color);
+}
+
+.holo-layer:nth-child(3) {
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
+  border-color: var(--tertiary-color);
+  animation-duration: 2s;
+  box-shadow: 0 0 10px var(--tertiary-color);
+}
+
+.holo-core {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  top: 30%;
+  left: 30%;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 25px var(--primary-color);
+}
+
+/* 数据流效果 */
+.data-stream {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.data-particle {
+  position: absolute;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  top: 50%;
+  left: 50%;
+  animation: particle-move 2s linear infinite;
+  animation-delay: var(--delay);
+  transform-origin: 0 0;
+  text-shadow: 0 0 5px var(--primary-color);
+}
+
+/* 加载状态区域 */
+.loading-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.status-text {
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(22, 27, 34, 0.8);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(56, 189, 248, 0.2), 
+    transparent
+  );
+  animation: shine 1.5s linear infinite;
+  transform: translateX(-100%);
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+  transition: width 0.3s ease-out;
+}
+
+.status-message {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  font-family: monospace;
+  text-align: center;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes char-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  50% {
+    text-shadow: 0 0 25px var(--glow-color), 0 0 35px var(--glow-color);
+  }
 }
 
 /* 默认旋转加载 */
@@ -402,79 +582,6 @@ defineExpose({
   animation-delay: 1s;
 }
 
-/* 全息加载 */
-.loading-holographic {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  perspective: 1000px;
-}
-
-.holo-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--primary-color);
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: holo-rotate 3s linear infinite;
-  box-shadow: 0 0 15px var(--primary-color);
-}
-
-.holo-layer:nth-child(2) {
-  width: 80%;
-  height: 80%;
-  top: 10%;
-  left: 10%;
-  border-color: var(--secondary-color);
-  animation-duration: 2.5s;
-  animation-direction: reverse;
-  box-shadow: 0 0 12px var(--secondary-color);
-}
-
-.holo-layer:nth-child(3) {
-  width: 60%;
-  height: 60%;
-  top: 20%;
-  left: 20%;
-  border-color: var(--tertiary-color);
-  animation-duration: 2s;
-  box-shadow: 0 0 10px var(--tertiary-color);
-}
-
-.holo-core {
-  position: absolute;
-  width: 40%;
-  height: 40%;
-  top: 30%;
-  left: 30%;
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: pulse 2s ease-in-out infinite;
-  box-shadow: 0 0 25px var(--primary-color);
-}
-
-/* 数据流效果 */
-.data-stream {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.data-particle {
-  position: absolute;
-  font-family: monospace;
-  font-size: 0.85rem;
-  color: var(--primary-color);
-  top: 50%;
-  left: 50%;
-  animation: particle-move 2s linear infinite;
-  animation-delay: var(--delay);
-  transform-origin: 0 0;
-  text-shadow: 0 0 5px var(--primary-color);
-}
-
 /* 条形加载 */
 .loading-bars {
   display: flex;
@@ -529,58 +636,6 @@ defineExpose({
 
 .loading-text .dot:nth-child(3) {
   animation-delay: 0.4s;
-}
-
-/* 加载状态区域 */
-.loading-status {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-  width: 100%;
-  max-width: 400px;
-}
-
-.status-text {
-  display: flex;
-  align-items: center;
-  font-family: monospace;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-
-.text {
-  margin-right: 0.25rem;
-}
-
-.dots .dot {
-  animation: dot-blink 1.4s infinite;
-  opacity: 0;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.progress {
-  height: 100%;
-  background-color: var(--primary-color);
-  box-shadow: 0 0 10px var(--primary-color);
-  transition: width 0.3s ease-out;
-}
-
-.status-message {
-  font-size: 1rem;
-  color: var(--text-color);
-  opacity: 0.8;
-  font-family: monospace;
-  text-align: center;
 }
 
 /* 动画关键帧 */
@@ -666,15 +721,6 @@ defineExpose({
   }
 }
 
-@keyframes char-glow {
-  0%, 100% {
-    text-shadow: 0 0 10px var(--glow-color);
-  }
-  50% {
-    text-shadow: 0 0 25px var(--glow-color), 0 0 35px var(--glow-color);
-  }
-}
-
 @keyframes scan-line {
   0% {
     transform: translateY(-50%) scaleX(0);
@@ -715,6 +761,24 @@ defineExpose({
   }
 }
 
+/* 响应式大小 */
+.loading-animation-container.small {
+  font-size: 0.8em;
+}
+
+.loading-animation-container.large {
+  font-size: 1.2em;
+}
+
+.text {
+  margin-right: 0.25rem;
+}
+
+.dots .dot {
+  animation: dot-blink 1.4s infinite;
+  opacity: 0;
+}
+
 @keyframes dot-blink {
   0%, 20% {
     opacity: 0;
@@ -728,14 +792,5 @@ defineExpose({
   80%, 100% {
     opacity: 0;
   }
-}
-
-/* 响应式大小 */
-.loading-animation-container.small {
-  font-size: 0.8em;
-}
-
-.loading-animation-container.large {
-  font-size: 1.2em;
 }
 </style> 
