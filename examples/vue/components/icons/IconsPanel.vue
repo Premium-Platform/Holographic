@@ -13,7 +13,7 @@
         <div class="icon-preview">
           <InlineSvgIcon :name="icon" :size="32" />
         </div>
-        <div class="icon-name">{{ icon }}</div>
+        <div class="icon-name">{{ $t(`icons.${icon}`) }}</div>
       </div>
     </div>
   </HTechPanel>

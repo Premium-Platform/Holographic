@@ -1,3 +1,11 @@
+<!--
+ * @Author: SpenserCai
+ * @Date: 2025-03-19 12:49:51
+ * @version: 
+ * @LastEditors: SpenserCai
+ * @LastEditTime: 2025-03-19 16:18:19
+ * @Description: file content
+-->
 <template>
   <component 
     :is="iconComponent" 

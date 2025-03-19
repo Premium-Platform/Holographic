@@ -28,7 +28,8 @@ export default {
     'ColorTag 标签': 'ColorTag 标签',
     'LoadingAnimation 加载': 'LoadingAnimation 加载',
     'NFC全息动画': 'NFC全息动画',
-    'TerminalOutput 终端': 'TerminalOutput 终端'
+    'TerminalOutput 终端': 'TerminalOutput 终端',
+    'Icons 图标': 'Icons 图标'
   },
   common: {
     theme: '主题',
@@ -140,7 +141,8 @@ export default {
     glitch: '故障效果',
     outline: '轮廓效果',
     highlighted: '高亮效果',
-    download: '下载'
+    download: '下载',
+    animated: '动画按钮'
   },
   input: {
     title: '输入框组件',

@@ -28,7 +28,8 @@ export default {
     'ColorTag 标签': 'ColorTag',
     'LoadingAnimation 加载': 'LoadingAnimation',
     'NFC全息动画': 'NFC Holographic Animation',
-    'TerminalOutput 终端': 'TerminalOutput'
+    'TerminalOutput 终端': 'TerminalOutput',
+    'Icons 图标': 'Icons'
   },
   common: {
     theme: 'Theme',
