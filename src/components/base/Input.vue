@@ -20,6 +20,7 @@
           'h-input-disabled': disabled,
           'h-input-has-error': error,
           'h-input-holographic': holographic,
+          'h-input-animated': holographic && animated,
           'h-input-focus': isFocused
         },
         customClass
@@ -64,6 +65,15 @@
           <component v-else-if="suffixIcon" :is="suffixIcon" class="h-input-icon" />
         </slot>
       </span>
+      
+      <!-- 全息效果元素 -->
+      <div v-if="holographic && animated" class="h-input-holo-effects">
+        <div class="h-input-holo-scanner"></div>
+        <div class="h-input-holo-glow"></div>
+        <div class="h-input-holo-particles">
+          <span v-for="n in 5" :key="`particle-${n}`" class="h-input-holo-particle" :style="{ animationDelay: `${n * 0.4}s` }"></span>
+        </div>
+      </div>
     </div>
     
     <!-- 错误信息 -->
@@ -151,6 +161,10 @@ export interface InputProps {
    * 全息效果
    */
   holographic?: boolean;
+  /**
+   * 动画效果
+   */
+  animated?: boolean;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -170,7 +184,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   prefixIcon: undefined,
   suffixIcon: undefined,
   customClass: '',
-  holographic: false
+  holographic: false,
+  animated: false
 });
 
 const emit = defineEmits<{
@@ -289,15 +304,17 @@ defineExpose({
 
 /* 主题变体 - Ark */
 .h-input-ark {
-  @apply bg-ark-active border border-ark-border text-ark-text;
+  @apply bg-ark-active border border-ark-border/80 text-ark-text shadow-sm;
+  box-shadow: 0 0 0 1px rgba(16, 24, 35, 0.05);
 }
 
 .h-input-ark:not(.h-input-disabled):hover {
-  @apply border-ark-accent/50;
+  @apply border-ark-accent/60 shadow-md;
+  box-shadow: 0 0 0 1px rgba(16, 24, 35, 0.1);
 }
 
 .h-input-ark.h-input-focus {
-  @apply border-ark-accent ring-1 ring-ark-accent/30;
+  @apply border-ark-accent ring-1 ring-ark-accent/40 shadow-lg;
 }
 
 /* 状态变体 */
@@ -311,24 +328,136 @@ defineExpose({
 
 /* 全息效果 */
 .h-input-holographic {
-  backdrop-filter: blur(5px);
-  @apply bg-opacity-50;
+  backdrop-filter: blur(8px);
+  @apply bg-opacity-40 relative border-opacity-60;
+  border-color: rgba(var(--ark-accent-rgb, 66, 153, 225), 0.4) !important;
+  box-shadow: 0 0 15px rgba(var(--ark-accent-rgb, 66, 153, 225), 0.1);
 }
 
 .h-input-ark.h-input-holographic {
   background: linear-gradient(135deg, 
-    rgba(16, 24, 35, 0.7) 0%, 
-    rgba(30, 41, 59, 0.7) 100%
+    rgba(16, 24, 35, 0.5) 0%, 
+    rgba(30, 41, 59, 0.5) 100%
   );
+}
+
+.h-input-ark.h-input-holographic:not(.h-input-disabled):hover {
+  border-color: rgba(var(--ark-accent-rgb, 66, 153, 225), 0.6) !important;
+  box-shadow: 0 0 20px rgba(var(--ark-accent-rgb, 66, 153, 225), 0.2);
+}
+
+.h-input-ark.h-input-holographic.h-input-focus {
+  border-color: rgba(var(--ark-accent-rgb, 66, 153, 225), 0.8) !important;
+  box-shadow: 0 0 25px rgba(var(--ark-accent-rgb, 66, 153, 225), 0.3);
+}
+
+/* 动画全息效果 */
+.h-input-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.h-input-holo-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.h-input-holo-scanner {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(var(--ark-accent-rgb, 66, 153, 225), 0.15) 50%, 
+    transparent 100%
+  );
+  z-index: 1;
+  animation: input-scanner 3s ease-in-out infinite;
+}
+
+.h-input-holo-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--ark-accent-rgb, 66, 153, 225), 0.2) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+  opacity: 0;
+  animation: input-glow 4s ease-in-out infinite alternate;
+}
+
+.h-input-holo-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.h-input-holo-particle {
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 2px;
+  background-color: rgba(var(--ark-accent-rgb, 66, 153, 225), 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(var(--ark-accent-rgb, 66, 153, 225), 0.8);
+  opacity: 0;
+  animation: input-particle 8s linear infinite;
+}
+
+.h-input-holo-particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
+}
+
+.h-input-holo-particle:nth-child(2) {
+  top: 70%;
+  left: 20%;
+}
+
+.h-input-holo-particle:nth-child(3) {
+  top: 40%;
+  left: 60%;
+}
+
+.h-input-holo-particle:nth-child(4) {
+  top: 80%;
+  left: 80%;
+}
+
+.h-input-holo-particle:nth-child(5) {
+  top: 30%;
+  left: 90%;
 }
 
 /* 前缀和后缀 */
 .h-input-prefix {
   @apply flex items-center pl-3 pr-1;
+  z-index: 2;
 }
 
 .h-input-suffix {
   @apply flex items-center pl-1 pr-3;
+  z-index: 2;
+}
+
+.h-input-group input {
+  position: relative;
+  z-index: 2;
 }
 
 .h-input-icon {
@@ -359,5 +488,47 @@ defineExpose({
 
 .h-input-error-ark {
   @apply text-ark-red-light;
+}
+
+/* 动画关键帧 */
+@keyframes input-scanner {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes input-glow {
+  0%, 20% {
+    opacity: 0;
+  }
+  50%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes input-particle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px) scale(0);
+    opacity: 0;
+  }
 }
 </style> 
