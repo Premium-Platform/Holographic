@@ -29,7 +29,8 @@
       <!-- 前缀图标 -->
       <span v-if="prefixIcon || $slots.prefix" class="h-input-prefix">
         <slot name="prefix">
-          <component v-if="prefixIcon" :is="prefixIcon" class="h-input-icon" />
+          <InlineSvgIcon v-if="typeof prefixIcon === 'string'" :name="prefixIcon" :size="iconSize" position="prefix" />
+          <component v-else-if="prefixIcon" :is="prefixIcon" class="h-input-icon" />
         </slot>
       </span>
       
@@ -62,6 +63,7 @@
               </svg>
             </span>
           </template>
+          <InlineSvgIcon v-else-if="typeof suffixIcon === 'string'" :name="suffixIcon" :size="iconSize" position="suffix" />
           <component v-else-if="suffixIcon" :is="suffixIcon" class="h-input-icon" />
         </slot>
       </span>
@@ -91,6 +93,7 @@
 import { ref, computed, useAttrs } from 'vue';
 import { generateId } from '../../utils';
 import type { Component } from 'vue';
+import InlineSvgIcon from '../icons/InlineSvgIcon.vue';
 
 export interface InputProps {
   /**
@@ -147,12 +150,18 @@ export interface InputProps {
   error?: string;
   /**
    * 前缀图标
+   * 支持直接传入图标名称字符串
    */
-  prefixIcon?: Component;
+  prefixIcon?: Component | string;
   /**
    * 后缀图标
+   * 支持直接传入图标名称字符串
    */
-  suffixIcon?: Component;
+  suffixIcon?: Component | string;
+  /**
+   * 图标大小
+   */
+  iconSize?: number;
   /**
    * 自定义类名
    */
@@ -183,6 +192,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   error: '',
   prefixIcon: undefined,
   suffixIcon: undefined,
+  iconSize: 20,
   customClass: '',
   holographic: false,
   animated: false

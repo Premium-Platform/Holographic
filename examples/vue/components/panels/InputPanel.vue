@@ -20,8 +20,8 @@
             <div class="input-container">
               <Input :placeholder="$t('input.defaultPlaceholder')" />
               <Input :placeholder="$t('input.disabledPlaceholder')" disabled />
-              <Input :placeholder="$t('input.prefixPlaceholder')" />
-              <Input :placeholder="$t('input.suffixPlaceholder')" />
+              <Input :placeholder="$t('input.prefixPlaceholder')" prefix-icon="chip" />
+              <Input :placeholder="$t('input.suffixPlaceholder')" suffix-icon="data" />
               <Input :placeholder="$t('input.clearablePlaceholder')" clearable />
               <Input type="password" :placeholder="$t('input.passwordPlaceholder')" />
             </div>
@@ -66,20 +66,20 @@
             <div class="input-container">
               <Input :placeholder="$t('input.prefixTemplate')">
                 <template #prefix>
-                  <i class="ri-user-line"></i>
+                  <InlineSvgIcon name="circuit" :size="20" />
                 </template>
               </Input>
               <Input :placeholder="$t('input.suffixTemplate')">
                 <template #suffix>
-                  <i class="ri-search-line"></i>
+                  <InlineSvgIcon name="security" :size="20" />
                 </template>
               </Input>
               <Input :placeholder="$t('input.bothTemplate')">
                 <template #prefix>
-                  <i class="ri-mail-line"></i>
+                  <InlineSvgIcon name="network" :size="20" />
                 </template>
                 <template #suffix>
-                  <i class="ri-arrow-right-line"></i>
+                  <InlineSvgIcon name="hologram" :size="20" />
                 </template>
               </Input>
             </div>
@@ -217,6 +217,7 @@
 
 <script setup lang="ts">
 import { Input } from '../../../../src/index';
+import InlineSvgIcon from '../../../../src/components/icons/InlineSvgIcon.vue';
 </script>
 
 <style scoped>
