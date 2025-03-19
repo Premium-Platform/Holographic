@@ -3,7 +3,7 @@
  * @Date: 2025-03-18 19:23:45
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2025-03-18 23:56:49
+ * @LastEditTime: 2025-03-19 21:53:01
  * @Description: file content
  */
 import { App } from 'vue';
@@ -45,8 +45,6 @@ import TerminalOutput from './components/visual/TerminalOutput.vue';
 import LoadingAnimation from './components/visual/LoadingAnimation.vue';
 
 // 图标组件
-import SvgIcon from './components/icons/SvgIcon.vue';
-import IconWrapper from './components/icons/IconWrapper.vue';
 import InlineSvgIcon from './components/icons/InlineSvgIcon.vue';
 
 // 为组件定义名称
@@ -70,7 +68,7 @@ const components: [string, any][] = [
   ['HColorTag', ColorTag],
   ['HTerminalOutput', TerminalOutput],
   ['HLoadingAnimation', LoadingAnimation],
-  ['HSvgIcon', SvgIcon],
+  ['HInlineSvgIcon', InlineSvgIcon],
 ];
 
 // 插件安装方法
@@ -107,7 +105,5 @@ export {
   ColorTag,
   TerminalOutput,
   LoadingAnimation,
-  SvgIcon,
-  IconWrapper,
   InlineSvgIcon,
 }; 
